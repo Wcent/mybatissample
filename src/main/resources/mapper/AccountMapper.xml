@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.cent.demo.mapper.AccountMapper">
+    <select id="getAccount" resultType="org.cent.demo.entity.Account">
+        select * from accounts where number = #{number}
+    </select>
+    <insert id="addAccount">
+        insert into accounts (id, number, name, createAt, updateAt, version)
+        values(#{id}, #{number}, #{name}, #{createAt}, #{updateAt}, #{version})
+    </insert>
+    <update id="updateAccount">
+        update accounts set
+        number = #{number}, name = #{name}, updateAt = #{updateAt}, version = #{version}
+        where id = #{id}
+    </update>
+    <delete id="deleteAccount">
+        delete from accounts where id = #{id}
+    </delete>
+</mapper>
